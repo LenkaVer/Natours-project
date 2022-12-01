@@ -1,0 +1,7 @@
+@use "../abstracts/variables" as variable;
+
+.section-about {
+  background-color: variable.$color-grey-light-1;
+  padding: 25rem 0;
+  margin-top: -20vh; //je to velikost headeru 95vh-výška toho clip-path 75vh
+}

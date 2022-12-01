@@ -10,7 +10,7 @@
     transition: all 0.2s;
     border-radius: 10rem;
     position: relative;
-    font-size: 1.6rem;
+    font-size: variable.$default-font-size;
   }
 
   &--animated {
@@ -55,5 +55,29 @@
     left: 0;
     z-index: -1;
     transition: all 0.4s;
+  }
+}
+
+.btn-text {
+  &:link,
+  &:visited {
+    font-size: variable.$default-font-size;
+    color: variable.$color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid variable.$color-primary;
+    padding: 3px;
+    transition: all 0.2s;
+  }
+  &:hover {
+    background-color: variable.$color-primary;
+    color: variable.$color-white;
+    box-shadow: 0 1rem 2rem rgba(variable.$color-black, 0.15);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    box-shadow: 0 0.5rem 1rem rgba(variable.$color-black, 0.15);
+    transform: translateY(0);
   }
 }
