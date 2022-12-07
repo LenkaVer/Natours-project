@@ -44,6 +44,15 @@
     }
   }
 
+  &--green {
+    background-color: variable.$color-primary;
+    color: variable.$color-white;
+
+    &::after {
+      background-color: variable.$color-primary;
+    }
+  }
+
   &::after {
     content: "";
     display: inline-block;
