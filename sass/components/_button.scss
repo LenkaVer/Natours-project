@@ -1,6 +1,7 @@
 @use "../abstracts/variables" as variable;
 
 .btn {
+  &,
   &:link,
   &:visited {
     text-transform: uppercase;
@@ -11,6 +12,10 @@
     border-radius: 10rem;
     position: relative;
     font-size: variable.$default-font-size;
+
+    //Change for the <button> element
+    border: none;
+    cursor: pointer;
   }
 
   &--animated {
@@ -30,7 +35,9 @@
     }
   }
 
-  &:active {
+  &:active,
+  &:focus {
+    outline: none;
     transform: translateY(-1px);
     box-shadow: 0 0.5rem 1rem rgba(variable.$color-black, 0.2);
   }
