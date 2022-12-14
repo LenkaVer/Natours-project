@@ -1,4 +1,5 @@
 @use "../abstracts/variables" as variable;
+@use "../abstracts/mixins" as mixin;
 
 .card {
   //FUNCTIONALITY
@@ -160,12 +161,10 @@
   //BACK SIDE STYLING
 
   &__cta {
-    position: absolute;
     text-align: center;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     width: 90%;
+
+    @include mixin.center-horizontalvertical;
   }
 
   &__price-box {

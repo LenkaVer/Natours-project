@@ -1,4 +1,5 @@
 @use "../abstracts/variables" as variable;
+@use "../abstracts/mixins" as mixin;
 
 .header {
   height: 95vh;
@@ -31,10 +32,8 @@
   }
 
   &__text-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     text-align: center;
+
+    @include mixin.center-horizontalvertical;
   }
 }

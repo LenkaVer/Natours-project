@@ -1,4 +1,5 @@
 @use "../abstracts/variables" as variable;
+@use "../abstracts/mixins" as mixin;
 
 .form {
   &__group:not(:last-child) {
@@ -80,13 +81,11 @@
       width: 1.3rem;
       height: 1.3rem;
       border-radius: 50%;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
       background-color: variable.$color-primary;
       opacity: 0;
       transition: opacity 0.2s;
+
+      @include mixin.center-horizontalvertical;
     }
   }
 
