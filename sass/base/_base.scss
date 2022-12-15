@@ -8,6 +8,7 @@
 
 html {
   font-size: 62.5%; /* převede se 10px (kvůli používání rem) na procenta 10/16 na procenta, definuje kolik je 1rem */
+  scroll-behavior: smooth;
 }
 
 body {
