@@ -2,24 +2,42 @@
 @use "../abstracts/mixins" as mixin;
 
 .header {
-  height: 95vh;
+  height: 85vh;
+  position: relative;
   background-image: linear-gradient(
       to right bottom,
       rgba(variable.$color-primary-light, 0.8),
       rgba(variable.$color-primary-dark, 0.8)
     ),
-    url(../img/hero.jpg);
+    url(../img/hero-small.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
-  // -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% 75vh,
-    0 100%
-  ); /*jsou to 4 rohy a na každém určuji pozici obrázku odkud kam vede (v ose X,Y v každém rohu) % i px můžu použít*/
-  position: relative;
+
+  @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+    height: 95vh;
+    // -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 75vh,
+      0 100%
+    ); /*jsou to 4 rohy a na každém určuji pozici obrázku odkud kam vede (v ose X,Y v každém rohu) % i px můžu použít*/
+  }
+
+  /* 192dpi rozlišení apple retina */
+  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba(variable.$color-primary-light, 0.8),
+        rgba(variable.$color-primary-dark, 0.8)
+      ),
+      url(../img/hero.jpg);
+  }
+
+  @include mixin.respond(phone) {
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  }
 
   &__logo-box {
     position: absolute;

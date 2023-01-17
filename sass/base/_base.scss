@@ -1,3 +1,5 @@
+@use "../abstracts/mixins" as mixin;
+
 *,
 *::before,
 *::after {
@@ -9,8 +11,26 @@
 html {
   font-size: 62.5%; /* převede se 10px (kvůli používání rem) na procenta 10/16 na procenta, definuje kolik je 1rem */
   scroll-behavior: smooth;
+
+  @include mixin.respond(tab-land) {
+    font-size: 56.25%; //1rem = 9px, 9/16 = 56.25%
+  }
+
+  @include mixin.respond(tab-port) {
+    font-size: 50%; //1rem = 8px, 8/16 = 50%
+  }
+
+  @include mixin.respond(big-desktop) {
+    font-size: 75%; //1rem = 12px, 12/16 = 75%
+  }
 }
 
 body {
   box-sizing: border-box;
+  padding: 3rem;
+  overflow-x: hidden;
+
+  @include mixin.respond(tab-port) {
+    padding: 0;
+  }
 }

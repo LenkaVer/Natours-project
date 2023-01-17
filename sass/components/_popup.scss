@@ -2,7 +2,7 @@
 @use "../abstracts/mixins" as mixin;
 
 .popup {
-  background-color: rgba(variable.$color-black, 0.8);
+  background-color: rgba(variable.$color-black, 0.3);
   height: 100vh;
   width: 100%;
   position: fixed;
@@ -12,6 +12,14 @@
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s;
+  backdrop-filter: blur(10px);
+
+  /* pro ukázku, už je podporováno
+  @supports (-webkit-backdrop-filter: blur(10px)) or
+    (backdrop-filter: blur(10px)) {
+    background-color: rgba(variable.$color-black, 0.3);
+  }
+  */
 
   &__content {
     @include mixin.center-horizontalvertical;
@@ -26,22 +34,45 @@
     transform: scale(0.25) translate(-50%, -50%);
     transition: all 0.5s 0.2s;
     transform-origin: 0% 0%;
+
+    @include mixin.respond(tab-land) {
+      display: block;
+    }
   }
 
   &__left {
     width: 33.33333%;
     display: table-cell;
+
+    @include mixin.respond(tab-land) {
+      display: flex;
+      width: 100%;
+    }
   }
   &__right {
     width: 66.66666%;
     display: table-cell;
     vertical-align: middle;
     padding: 3rem 5rem;
+
+    @include mixin.respond(tab-land) {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+
+    @include mixin.respond(phone) {
+      padding: 3rem;
+    }
   }
 
   &__img {
     display: block;
     width: 100%;
+
+    @include mixin.respond(tab-land) {
+      width: 50%;
+    }
   }
 
   &__text {
@@ -60,6 +91,14 @@
     // -webkit-hyphens: auto;
     hyphens: auto;
     hyphens: auto;
+
+    @include mixin.respond(tab-land) {
+      text-align: start;
+    }
+
+    @include mixin.respond(phone) {
+      column-count: auto;
+    }
   }
 
   &:target {
