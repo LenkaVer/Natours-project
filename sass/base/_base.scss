@@ -1,4 +1,5 @@
 @use "../abstracts/mixins" as mixin;
+@use "../abstracts/variables" as variable;
 
 *,
 *::before,
@@ -33,4 +34,9 @@ body {
   @include mixin.respond(tab-port) {
     padding: 0;
   }
+}
+
+::selection {
+  background-color: variable.$color-primary;
+  color: variable.$color-white;
 }
